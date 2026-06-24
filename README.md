@@ -1,7 +1,7 @@
 # Universal Vein Miner
 A fork of [2008Choco's VeinMiner](https://github.com/2008Choco/VeinMiner)
 
-This project is now archived as [2008Choco's VeinMiner](https://github.com/2008Choco/VeinMiner) support Folia using Folialib (no more longer dumb patch like me)
+## This project is now archived as [2008Choco's VeinMiner](https://github.com/2008Choco/VeinMiner) support Folia using Folialib (no more longer dumb patch like me)
 
 This Minecraft (Bukkit) plugin aims to recreate portablejim's popular Minecraft Forge mod, VeinMiner, for CraftBukkit and Spigot servers. Licensed under GPLv3, releases are made on GitHub to comply with this license. You are currently on the GitHub page for VeinMiner (for Bukkit). portablejim's VeinMiner (for Forge) repository may be found [here](https://github.com/portablejim/VeinMiner). You are welcome to fork this project and create a pull request or request features/report bugs through the issue tracker.
 
