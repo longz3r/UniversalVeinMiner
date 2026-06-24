@@ -1,13 +1,12 @@
 [versions]
 # (common)
-choco-networking = "0.1.1"
-gson = "2.10.1" # keep in line with Minecraft and/or Bukkit
+choco-networking = "0.1.4"
 jetbrains-annotations = "24.1.0"
-junit = "5.10.2"
+junit = "5.13.4"
 
 # (bukkit)
 anticheat-aac = "0.0.1-SNAPSHOT"
-anticheat-grim = "d99dcba158" # The last API version before their "platform independence" update, which changes the package of their FlagEvent!
+anticheat-grim = "1.2.0.0"
 anticheat-intave = "14.4.2"
 anticheat-matrix = "317d4635fd" # This repository is dead now, but we're going to keep using it because it exists on JitPack :)
 anticheat-nocheatplus = "3.16.1-SNAPSHOT"
@@ -18,35 +17,33 @@ anticheat-negativity = "2.7.1"
 anticheat-themis = "0.0.1-SNAPSHOT"
 anticheat-vulcan = "2.9.1"
 bstats = "3.0.2"
-jobs = "v5.2.2.3" # Higher versions require Java 21
+jobs = "v5.2.6.3"
 mcmmo = "2.1.228"
 placeholder-api = "2.11.5"
-spigot-api = "1.17.1-R0.1-SNAPSHOT"
+spigot-api = "1.21.3-R0.1-SNAPSHOT"
 vault-api = "1.7"
-worldguard = "7.0.9" # Higher versions require Java 21
+worldguard = "7.0.9"
+folialib = "0.5.1"
 
 # (fabric)
-fabric-api = "0.127.0+1.21.6"
-fabric-loader = "0.16.14"
-minecraft = "1.21.6"
+fabric-api = "0.152.0+26.2"
+fabric-loader = "0.19.3"
+minecraft = "26.2"
 
 # plugins
-aggregate-javadoc = "8.4"
-fabric-loom = "1.10-SNAPSHOT"
-shadow = "8.1.1"
+fabric-loom = "1.17-SNAPSHOT"
+shadow = "9.4.0"
 
 [libraries]
 # (common)
 choco-networking-common = { module = "wtf.choco:networking-common", version.ref = "choco-networking" }
-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
 
 # (bukkit)
 anticheat-aac = { module = "me.konsolas:AACAPIDummy", version.ref = "anticheat-aac" } # Dummy API artifact, contains only add/removeExemption() and AACExemption classes useful to VeinMiner!
 anticheat-grim = { module = "ac.grim.grimac:GrimAPI", version.ref = "anticheat-grim" }
-anticheat-intave = { module = "de.jpx3.intave.access:intave-access", version.ref = "anticheat-intave" }
+anticheat-intave = { module = "com.github.intave:access", version.ref = "anticheat-intave" }
 anticheat-matrix = { module = "com.github.jiangdashao:matrix-api-repo", version.ref = "anticheat-matrix" }
 anticheat-nocheatplus = { module = "fr.neatmonster:nocheatplus", version.ref = "anticheat-nocheatplus" }
 anticheat-polar = { module = "top.polar:api", version.ref = "anticheat-polar" }
@@ -64,6 +61,7 @@ placeholder-api = { module = "me.clip:placeholderapi", version.ref = "placeholde
 spigot-api = { module = "org.spigotmc:spigot-api", version.ref = "spigot-api" }
 vault-api = { module = "net.milkbowl.vault:VaultAPI", version.ref = "vault-api" }
 worldguard = { module = "com.sk89q.worldguard:worldguard-bukkit", version.ref = "worldguard" }
+folialib = { module = "com.tcoded:FoliaLib", version.ref = "folialib" }
 
 # (fabric)
 choco-networking-fabric = { module = "wtf.choco:networking-fabric", version.ref = "choco-networking" }
@@ -72,6 +70,5 @@ fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-l
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 
 [plugins]
-aggregate-javadoc = { id = "io.freefair.aggregate-javadoc", version.ref = "aggregate-javadoc" }
-fabric-loom = { id = "fabric-loom", version.ref = "fabric-loom" }
-shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
+fabric-loom = { id = "net.fabricmc.fabric-loom", version.ref = "fabric-loom" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }

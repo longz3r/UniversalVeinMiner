@@ -4,9 +4,9 @@ import com.mojang.blaze3d.platform.Window;
 
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.profiling.Profiler;
 
 import org.jetbrains.annotations.NotNull;
@@ -19,16 +19,16 @@ import wtf.choco.veinminer.client.network.FabricServerState;
  */
 public final class VeinMiningIconHudElement extends VeinMinerHudElement {
 
-    public static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath("veinminer_companion", "vein_mining_icon");
+    public static final Identifier ID = Identifier.fromNamespaceAndPath("veinminer_companion", "vein_mining_icon");
 
-    private static final ResourceLocation VEINMINER_ICON_LOCATION = ResourceLocation.fromNamespaceAndPath("veinminer_companion", "textures/gui/veinminer_icon.png");
+    private static final Identifier VEINMINER_ICON_LOCATION = Identifier.fromNamespaceAndPath("veinminer_companion", "textures/gui/veinminer_icon.png");
 
     public VeinMiningIconHudElement(VeinMinerClient client) {
         super(client);
     }
 
     @Override
-    public void render(@NotNull FabricServerState serverState, @NotNull GuiGraphics graphics, @NotNull DeltaTracker delta) {
+    public void render(@NotNull FabricServerState serverState, @NotNull GuiGraphicsExtractor graphics, @NotNull DeltaTracker delta) {
         Profiler.get().push("veinMiningIcon");
 
         Window window = Minecraft.getInstance().getWindow();
@@ -41,7 +41,7 @@ public final class VeinMiningIconHudElement extends VeinMinerHudElement {
 
     @Override
     public boolean shouldRender(@NotNull FabricServerState serverState) {
-        return serverState.getConfig().isAllowActivationKeybind() && Minecraft.renderNames() && serverState.isActive();
+        return serverState.getConfig().isAllowActivationKeybind() && !Minecraft.getInstance().gui.hud.isHidden() && serverState.isActive();
     }
 
 }

@@ -17,7 +17,7 @@ import wtf.choco.veinminer.network.protocol.serverbound.ServerboundRequestVeinMi
 
 /**
  * A class handling the logic for when a player moves from tile to tile, requesting the
- * server to update the vein mining for the new position (if necesary).
+ * server to update the vein mining for the new position (if necessary).
  */
 public final class BlockLookUpdateHandler {
 
@@ -38,11 +38,7 @@ public final class BlockLookUpdateHandler {
      * @param minecraft the minecraft instance
      */
     public void tick(@NotNull Minecraft minecraft) {
-        if (!client.hasServerState()) {
-            return;
-        }
-
-        if (!(minecraft.hitResult instanceof BlockHitResult hit)) {
+        if (!client.hasServerState() || !(minecraft.hitResult instanceof BlockHitResult hit)) {
             return;
         }
 
@@ -54,7 +50,7 @@ public final class BlockLookUpdateHandler {
         this.updateWireframeIfNecessary(serverState, lookingAtPos, lookingAtFace, lookingAtState);
 
         // Updating the new last looked at position
-        if (minecraft.player != null && minecraft.player.level() != null && !minecraft.player.level().isEmptyBlock(lookingAtPos)) {
+        if (minecraft.player != null && !minecraft.player.level().isEmptyBlock(lookingAtPos)) {
             this.lastLookedAtBlockPos = lookingAtPos;
             this.lastLookedAtBlockFace = lookingAtFace;
             this.lastLookedAtBlockState = lookingAtState;
@@ -75,7 +71,7 @@ public final class BlockLookUpdateHandler {
     /**
      * Get the last looked at {@link BlockPos}.
      *
-     * @return the last looked at block pos
+     * @return the last looked at block position
      */
     @Nullable
     public BlockPos getLastLookedAtBlockPos() {

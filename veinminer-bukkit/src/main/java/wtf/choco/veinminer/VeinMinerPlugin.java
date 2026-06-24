@@ -1,6 +1,7 @@
 package wtf.choco.veinminer;
 
 import com.google.common.base.Preconditions;
+import com.tcoded.folialib.FoliaLib;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -43,7 +44,8 @@ import wtf.choco.veinminer.config.ConfigWrapper;
 import wtf.choco.veinminer.config.VeinMinerConfiguration;
 import wtf.choco.veinminer.config.impl.StandardVeinMinerConfiguration;
 import wtf.choco.veinminer.config.migrator.ConfigMigrator;
-import wtf.choco.veinminer.config.migrator.MigrationStep;
+import wtf.choco.veinminer.config.migrator.MigrationStepAliases;
+import wtf.choco.veinminer.config.migrator.MigrationStepBlockListsToCategoriesFile;
 import wtf.choco.veinminer.data.PersistentDataStorage;
 import wtf.choco.veinminer.data.PersistentStorageType;
 import wtf.choco.veinminer.economy.EmptyEconomy;
@@ -91,6 +93,7 @@ public final class VeinMinerPlugin extends JavaPlugin {
 
     private final UpdateChecker updateChecker = new SpigotMCUpdateChecker(this, 12038);
     private final List<AntiCheatHook> anticheatHooks = new ArrayList<>();
+    private final FoliaLib foliaLib = new FoliaLib(this);
 
     private LanguageFile language;
     private ConfigWrapper categoriesConfig;
@@ -129,7 +132,8 @@ public final class VeinMinerPlugin extends JavaPlugin {
         this.saveDefaultConfig();
 
         ConfigMigrator configMigrator = new ConfigMigrator(this);
-        configMigrator.addStep(MigrationStep.blockListsToCategoriesFile());
+        configMigrator.addStep(new MigrationStepBlockListsToCategoriesFile());
+        configMigrator.addStep(new MigrationStepAliases());
         int configMigrations = configMigrator.migrate();
         if (configMigrations > 0) {
             this.getLogger().info("Successfully ran " + configMigrations + " configuration migrations! Your configuration files are now up to date with the latest version of " + getName());
@@ -401,6 +405,15 @@ public final class VeinMinerPlugin extends JavaPlugin {
     @UnmodifiableView
     public List<AntiCheatHook> getAnticheatHooks() {
         return Collections.unmodifiableList(anticheatHooks);
+    }
+
+    /**
+     * Get VeinMiner's FoliaLib instance.
+     *
+     * @return the FoliaLib instance
+     */
+    public FoliaLib getFoliaLib() {
+        return foliaLib;
     }
 
     /**

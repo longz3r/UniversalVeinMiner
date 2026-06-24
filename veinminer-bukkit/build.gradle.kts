@@ -9,12 +9,12 @@ repositories {
     maven("https://maven.enginehub.org/repo/") // WorldGuard
     maven("https://nexus.neetgames.com/repository/maven-public/") // mcMMO
 
-    maven("https://jitpack.io") // mcMMO, Matrix AntiCheat, Light AntiCheat
+    maven("https://jitpack.io") // mcMMO, Matrix AntiCheat, Light AntiCheat, Intave Access
     maven("https://repo.md-5.net/content/repositories/snapshots/") // NoCheatPlus
     maven("https://repo.grim.ac/snapshots/") // Grim Anticheat
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/") // PlaceholderAPI
     maven("https://repo.polar.top/repository/polar/") // Polar AntiCheat
-    maven("https://repo.janmm14.de/repository/intave/") // Intave AntiCheat
+    maven("https://repo.tcoded.com/releases") // FoliaLib
 }
 
 dependencies {
@@ -23,6 +23,7 @@ dependencies {
     implementation(project(":veinminer-common"))
 
     implementation(libs.bstats.bukkit)
+    implementation(libs.folialib)
     implementation(libs.choco.networking.bukkit) {
         exclude(group = "org.spigotmc", module = "spigot-api")
     }
@@ -52,7 +53,11 @@ dependencies {
     compileOnly(libs.anticheat.vulcan)
 
     testImplementation(libs.junit.jupiter.api)
-    testRuntimeOnly(libs.junit.jupiter.engine)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+shadow {
+    addShadowVariantIntoJavaComponent = false
 }
 
 tasks {
@@ -69,6 +74,10 @@ tasks {
         dependsOn("shadowJar")
     }
 
+    test {
+        useJUnitPlatform()
+    }
+
     withType<Javadoc>() {
         exclude("wtf/choco/veinminer/listener/**")
         exclude("wtf/choco/veinminer/command/**")
@@ -76,20 +85,16 @@ tasks {
 
     named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
         relocate("org.bstats", "wtf.choco.veinminer.metrics")
+        relocate("com.tcoded.folialib", "wtf.choco.veinminer.folialib")
         archiveFileName = "VeinMiner-Bukkit-${version}.jar"
 
         dependencies {
             include(project(":veinminer-common"))
             include(dependency(libs.bstats.base.get()))
             include(dependency(libs.bstats.bukkit.get()))
+            include(dependency(libs.folialib.get()))
             include(dependency(libs.choco.networking.common.get()))
             include(dependency(libs.choco.networking.bukkit.get()))
         }
     }
-}
-
-// Strip out shadowed artifacts from publications
-val javaComponent = components["java"] as AdhocComponentWithVariants
-javaComponent.withVariantsFromConfiguration(configurations["shadowRuntimeElements"]) {
-    skip()
 }
