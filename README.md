@@ -1,13 +1,15 @@
-# Simple Vein Miner
+# Universal Vein Miner
 A fork of [2008Choco's VeinMiner](https://github.com/2008Choco/VeinMiner)
+
+This project is now archived as [2008Choco's VeinMiner](https://github.com/2008Choco/VeinMiner) support Folia using Folialib (no more longer dumb patch like me)
 
 This Minecraft (Bukkit) plugin aims to recreate portablejim's popular Minecraft Forge mod, VeinMiner, for CraftBukkit and Spigot servers. Licensed under GPLv3, releases are made on GitHub to comply with this license. You are currently on the GitHub page for VeinMiner (for Bukkit). portablejim's VeinMiner (for Forge) repository may be found [here](https://github.com/portablejim/VeinMiner). You are welcome to fork this project and create a pull request or request features/report bugs through the issue tracker.
 
 # Overview
 
-Simple Vein Miner introduces a vanilla-friendly mechanic that allows players to instantly mine groups of adjacent blocks, saving nothing more than precious time. Groups of ores, large trees, vast crop fields, and more. Each tool can have its own configurable block list allowing for limitless possibilities. This is a fantastic perk for Prison, Factions and Semi-Vanilla servers that isn't overpowered but still gives players a rewarding benefit for donating to your server.
+Universal Vein Miner introduces a vanilla-friendly mechanic that allows players to instantly mine groups of adjacent blocks, saving nothing more than precious time. Groups of ores, large trees, vast crop fields, and more. Each tool can have its own configurable block list allowing for limitless possibilities. This is a fantastic perk for Prison, Factions and Semi-Vanilla servers that isn't overpowered but still gives players a rewarding benefit for donating to your server.
 
-![Simple Vein Miner in action](https://proxy.spigotmc.org/916cb079b12e62ff56589b0b9d54c253f273d668/68747470733a2f2f692e696d6775722e636f6d2f5a56724a7631422e676966)
+![Universal Vein Miner in action](https://proxy.spigotmc.org/916cb079b12e62ff56589b0b9d54c253f273d668/68747470733a2f2f692e696d6775722e636f6d2f5a56724a7631422e676966)
 
 ## Features In Brief:
 - Efficient mining of similar blocks in quick succession
@@ -62,11 +64,11 @@ The companion mod is an optional client-sided mod to provide a more rich user-ex
 - `/blocklist ...`
   - `/blocklist <category> add <block>`
     - Add a vein mineable block to the given category  
-    - Blocks can be simple ids like `minecraft:stone`, or with states like `minecraft:chest[waterlogged=true]`  
+    - Blocks can be Universal ids like `minecraft:stone`, or with states like `minecraft:chest[waterlogged=true]`  
     - **Permission:** `veinminer.command.blocklist`
   - `/blocklist <category> remove <block>`
     - Remove a block from the given category  
-    - Blocks can be simple ids like `minecraft:stone`, or with states like `minecraft:chest[waterlogged=true]`  
+    - Blocks can be Universal ids like `minecraft:stone`, or with states like `minecraft:chest[waterlogged=true]`  
     - **Permission:** `veinminer.command.blocklist`
   - `/blocklist <category> list`
     - List all blocks (and block states) that are vein mineable with the given category  
@@ -85,7 +87,7 @@ The companion mod is an optional client-sided mod to provide a more rich user-ex
 
 # Supported Anti Cheats
 
-Simple Vein Miner natively supports many popular anti cheats so that your players will not be flagged with "fast break" (or whatever the equivalent flag is for your anti cheat of choice). If the anti cheat you are using is not listed here, there is a high chance that players using vein miner will be false flagged for breaking blocks too quickly. If you want another anti cheat added to this list, please request it be supported either in the Discussion Thread, on Discord, or on GitHub as an issue.
+Universal Vein Miner natively supports many popular anti cheats so that your players will not be flagged with "fast break" (or whatever the equivalent flag is for your anti cheat of choice). If the anti cheat you are using is not listed here, there is a high chance that players using vein miner will be false flagged for breaking blocks too quickly. If you want another anti cheat added to this list, please request it be supported either in the Discussion Thread, on Discord, or on GitHub as an issue.
 - AAC (Advanced AntiCheat) 5.x
 - AntiAura
 - FoxAddition (via their plugin)
@@ -101,7 +103,7 @@ Simple Vein Miner natively supports many popular anti cheats so that your player
 
 # Placeholders (PlaceholderAPI)
 
-Simple Vein Miner happily supports PlaceholderAPI with the following placeholders:
+Universal Vein Miner happily supports PlaceholderAPI with the following placeholders:
 
 - `"%veinminer_enabled%"`  
   Whether or not VeinMiner is toggled on.
@@ -157,4 +159,4 @@ Simple Vein Miner happily supports PlaceholderAPI with the following placeholder
 
 # Messaging Protocol
 
-Simple Vein Miner communicates with the Minecraft client via its [custom payload packet](https://wiki.vg/Protocol#Plugin_Message_.28clientbound.29). While VeinMiner does have its own client-sided companion mod, other client mods are capable of listening to these channels and intercepting messages. Additionally, while VeinMiner supplies API to communicate with the client, servers also have the option of listening to the raw message contents.
+Universal Vein Miner communicates with the Minecraft client via its [custom payload packet](https://wiki.vg/Protocol#Plugin_Message_.28clientbound.29). While VeinMiner does have its own client-sided companion mod, other client mods are capable of listening to these channels and intercepting messages. Additionally, while VeinMiner supplies API to communicate with the client, servers also have the option of listening to the raw message contents.
